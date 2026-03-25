@@ -237,81 +237,44 @@ public:
 
 class Mapa{
 private:
-    static const int FILAS = 11;
-    static const int COLUMNAS = 20;
+    static const int COLUMNAS = 11;
+    static const int FILAS = 20;
 public:
     char mapa[FILAS][COLUMNAS];
-    vector< tuple<int, int>> pst_cts_p1 = {
-    {1,1}, {1,3}, {1,5}, {1,7}, {1,9}
-}; 
-    vector< tuple<int, int>> pst_cts_p2={{18,1},{18,3},{18,5},{18,7},{18,9}};
-    vector<string> vidas = {"vidas"};
-    vector< tuple<int, int>> pst_vidas = {{3,4},{4,4},{5,4},{6,4},{7,4}};
+    string JP1 = "P1";
+    vector<tuple<int,int>> jugador1 = {{0,5}, {0,7}};
+
+    string JP2 = "P2";
+    vector<tuple<int,int>> jugador2 = {{10,5}, {10,7}};
+
+    string vidas = "vidas";
+    vector<tuple<int,int>> pst_vidas = {{3,4}, {4,4}, {5,4}, {6,4}, {7,4}};
+
     vector<string> poder = {"Shuriken"};
-    vector< tuple<int, int>> pst_shuriken = {{3,4},{4,4},{5,4},{6,4},{7,4}, {8,4},{9,4},{10,4}};
+    vector<tuple<int, int>> pst_shuriken = {{3,4},{4,4},{5,4},{6,4},{7,4}, {8,4},{9,4},{10,4}};
+ 
     vector<string> puntos = {"Nivel"};
-    vector< tuple<string, int>> pst_nivel = {{3,7},{4,7},{5,7},{6,7},{7,7}  };
+    vector<tuple<int, int>> pst_nivel = {{3,7},{4,7},{5,7},{6,7},{7,7}  };
+ 
     vector<string> mazo = {"Mazo"};
-    vector< tuple<string, int>> pst_mazo = {{9,8},{10,8},{11,8},{12,8},{7,8}};
-   
-    Mapa(){
-            for (int i = 0; i < FILAS; i++){
-            for (int j = 0; j < COLUMNAS; j++){
-                mapa[i][j] = ' ';
-            }
-        }
-    int contador=0;
-    for (int i = 0; i < FILAS; i++){
-        for (int j = 0; j < COLUMNAS; j++){
-            for (auto t : pst_vidas){
-                if (i == get<0>(t) && j == get<1>(t)){
-                    mapa[i][j] = vidas[contador];
-                    contador++;
-                }
-            }
+    vector<tuple<int, int>> pst_mazo = {{9,8},{10,8},{11,8},{12,8},{7,8}};
+
+    void dibujarTexto(string texto, vector<tuple<int,int>> posiciones){
+        for (int k = 0; k < texto.size() && k < posiciones.size(); k++){
+            int i = get<0>(posiciones[k]);
+            int j = get<1>(posiciones[k]);
+            mapa[i][j] = texto[k];
         }
     }
-       for (int i = 0; i < FILAS; i++){
-            for (int j = 0; j < COLUMNAS; j++){
-                for (auto t : pst_cts_p1){
-                    if (i == get<0>(t) && j == get<1>(t)){
-                        mapa[i][j] = 'P1';
-                    }
-                }
-            }
-       }
-       for (int i = 0; i < FILAS; i++){
-            for (int j = 0; j < COLUMNAS; j++){
-                for (auto t : pst_cts_p2){
-                    if (i == get<0>(t) && j == get<1>(t)){
-                        mapa[i][j] = 'P2';
-                    }
-                }
-            }
-       }
-         for (int i = 0; i < FILAS; i++){
-            for (int j = 0; j < COLUMNAS; j++){
-                for (auto t : pst_shuriken){
-                    if (i == get<0>(t) && j == get<1>(t)){
-                        mapa[i][j] = poder[contador][0];
-                        contador++;
-                    }
-                }
-            }
-         }
-            for (int i = 0; i < FILAS; i++){
-                for (int j = 0; j < COLUMNAS; j++){
-                    for (auto t : pst_mazo){
-                        if (i == get<0>(t) && j == get<1>(t)){
-                            mapa[i][j] = mazo[contador][0];
-                            contador++;
-                        }
-                    }
-                }
-            }
+
+    Mapa(){
+        // dibujar
+        dibujarTexto(JP1, jugador1);
+        dibujarTexto(JP2, jugador2);
+        dibujarTexto(vidas, pst_vidas);
     }
 };
-
+            
 int main(){
 
     Juego juego;
