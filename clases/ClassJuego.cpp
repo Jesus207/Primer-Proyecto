@@ -6,7 +6,7 @@ class Juego{
 
 public:
 
-    Jugador jugadores[4];
+    Jugador jugadores[2];
     int numJugadores;
 
     Mazo mazo;

@@ -52,6 +52,7 @@ public:
     }
     Mapa(){
         // dibujar
+        mostrarmapa();
         dibujarTexto(JP1, jugador1);
         dibujarTexto(JP2, jugador2);
         dibujarTexto(vidas, pst_vidas);
