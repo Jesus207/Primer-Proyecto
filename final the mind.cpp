@@ -18,14 +18,13 @@ public:
     vector<pair<string, int>> pst_nivel = {(3,7),(4,7),(5,7),(6,7),(7,7)};
     vector<string> mazo = {"mazo"};
     vector<pair<string, int>> pst_mazo = {(9,8),(10,8),(11,8),(12,8),(7,8)};
-   
+    int contador=0
     Mapa(){
             for (int i = 0; i < FILAS; i++){
             for (int j = 0; j < COLUMNAS; j++){
                 mapa[i][j] = ' ';
             }
         }
-        int contador=0
         for (int i = 0; i < FILAS; i++){
             for (int j = 0; j < COLUMNAS; j++){
                 for (auto t : pst_vidas){
