@@ -11,14 +11,14 @@ public:
 
     Mazo mazo;
 
-    int vidas;
+    int Nvidas;
     int nivel;
 
     int ultimaCarta;
 
     Juego(){
 
-        vidas = 3;
+        Nvidas = 3;
         nivel = 1;
         ultimaCarta = 0;
 
@@ -57,7 +57,7 @@ public:
         int totalCartas = nivel * numJugadores;
         int cartasJugadas = 0;
 
-        while(cartasJugadas < totalCartas && vidas > 0){
+        while(cartasJugadas < totalCartas && Nvidas > 0){
 
             for(int i = 0; i < numJugadores; i++){
 
@@ -69,9 +69,9 @@ public:
 
                     cout << "Error! carta menor que la anterior" << endl;
 
-                    vidas--;
+                    Nvidas--;
 
-                    cout << "Vidas: " << vidas << endl;
+                    cout << "Vidas: " << Nvidas << endl;
 
                 }
 
@@ -79,7 +79,7 @@ public:
 
                 cartasJugadas++;
 
-                if(cartasJugadas >= totalCartas || vidas <= 0){
+                if(cartasJugadas >= totalCartas || Nvidas <= 0){
                     break;
                 }
 
@@ -87,7 +87,7 @@ public:
 
         }
 
-        if(vidas > 0){
+        if(Nvidas > 0){
             cout << "Nivel superado" << endl;
             nivel++;
         }
