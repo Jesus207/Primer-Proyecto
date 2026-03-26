@@ -5,33 +5,51 @@
 #include <algorithm>
 #include "clases/ClassJuego.cpp"
 #include "clases/ClassMapa.cpp"
+#ifdef _win32
+#include "conio.h"
+#else
+#include <ncurses.h>
+#endif
 
-using namespace std;
-
+using namespace std; 
 int main() {
-    // Limpiar pantalla
+    #ifdef _win32
     system("cls");
-
+    #else
+    system("clear");
+    #endif
     cout << "\nPresiona una tecla para empezar...";
-    cin.ignore();
     cin.get();
+    cin.ignore();
+    initscr();      // iniciar pantalla
+    noecho();       // no mostrar teclas
+    cbreak();
     // Crear mapa
     // Crear juego
     Juego juego;
     Mapa m;
-    while (juego.Nvidas>0){
-        cout << m.mapa;
+    Jugador juga;
+    while(juego.Nvidas > 0 && juego.nivel <= 5){
+        m.mostrarmapa();
+    ###
+        char tecla;
+        while(true){
+            for (int i = 0; i < m.puesto_c1.size(); i++){
+                tecla = getch();
+                if(tecla == 'w' && m.mapa[juga.jugador1F-1][juga.jugador1C] == m.puesto_c1[i]) m.mapa[juga.jugador1F-1][juga.jugador1C] = 'C';
+                if(tecla == 's'&& m.mapa[juga.jugador1F][juga.jugador1C] == m.puesto_c1[i]) m.mapa[juga.jugador1F+1][juga.jugador1C] = 'C';
+                if(tecla == 'q') break;
+            }
+    ###
         juego.iniciarNivel();
         juego.jugarNivel();
-        cout << "\nNumero de jugadores: ";
-        cin >> juego.numJugadores;
-
-        if(juego.Nvidas <= 0){
-            cout << "Perdieron el juego" << endl;
-        } else {
-            cout << "Ganaron el juego" << endl;
-        }
-
-        return 0;
     }
+    if(juego.Nvidas <= 0){
+        cout << "Perdieron el juego" << endl;
+    }
+    else {
+        cout << "Ganaron el juego" << endl;
+       }
+    endwin();
+    return 0;
 }

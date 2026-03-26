@@ -2,11 +2,12 @@
 #define JUGADOR_H
 #include <iostream>
 #include "ClassCarta.cpp"
+#include "ClassMapa.cpp"
 using namespace std;
 class Jugador{
-
 public:
-
+    int jugador1F = 1, jugador1C = 1;
+    int jugador2F = 18, jugador2C = 1;
     string nombre;
     Carta mano[100];
     int cantidadCartas;
