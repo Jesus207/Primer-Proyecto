@@ -19,14 +19,12 @@ int main() {
     initscr();      // iniciar pantalla
     noecho();       // no mostrar teclas
     cbreak();
-    // Crear mapa
-    // Crear juego
-    Juego juego;
-    Mapa m;
-    Jugador juga;
+    
+    Juego juego;    // Crear juego
+    Mapa m;       // Crear mapa
+    Jugador juga;  //crea datos de jugador
     while(juego.Nvidas > 0 && juego.nivel <= 5){
         m.mostrarmapa();
-    /*
         char tecla;
         while(true){
             for (int i = 0; i < m.puesto_c1.size(); i++){
@@ -35,7 +33,6 @@ int main() {
                 if(tecla == 's'&& m.mapa[juga.jugador1F][juga.jugador1C] == m.puesto_c1[i]) m.mapa[juga.jugador1F+1][juga.jugador1C] = 'C';
                 if(tecla == 'q') break;
             }
-    */
         juego.iniciarNivel();
         juego.jugarNivel();
     #ifdef _win32

@@ -1,8 +1,8 @@
-#ifndef JUGADOR_H
-#define JUGADOR_H
-#include <iostream>
+#ifndef CLASJUGADOR_H
+#define CLASJUGADOR_H
 #include "ClassCarta.cpp"
 #include "ClassMapa.cpp"
+#include "ClassJuego.cpp"
 using namespace std;
 class Jugador{
 public:

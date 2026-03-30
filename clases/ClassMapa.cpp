@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+#include "ClassJuego.cpp"
 using namespace std;
+Juego juego;
 class Mapa{
 private:
     static const int COLUMNAS = 11;
@@ -24,10 +26,20 @@ public:
     vector<tuple<int, int>> pst_shuriken = {{3,4},{4,4},{5,4},{6,4},{7,4}, {8,4},{9,4},{10,4}};
  
     string nivel = "Nivel";
-    vector<tuple<int, int>> pst_nivel = {{3,7},{4,7},{5,7},{6,7},{7,7}  };
+    vector<tuple<int, int>> pst_nivel = {{3,7},{4,7},{5,7},{6,7},{7,7}  };// ubicacion del titulo "Nivel"
+    vector<tuple<int, int>> pst_nivel_num = {{3,8},{4,8}}; // ubicacion del numero del nivel: __
+    string N = "+=" // la ubicacion de donde se mostrara el nivel: __
+
+    // no se como mostrar el numero del nivel, asi que lo deje como un string y lo actualizo cada 
+    // vez que se inicia un nuevo nivel
+    string nivel_num = juego.Nnivel; 
+    
+    vector<tuple<int, int>> pst_nivel_num = {{5,8}};
+    // el numero del nivel que se mostrara en el mapa
  
     string mazo = "Mazo";
     vector<tuple<int, int>> pst_mazo = {{9,8},{10,8},{11,8},{12,8},{7,8}};
+
 
     void dibujarTexto(string texto, vector<tuple<int,int>> posiciones){
         for (int k = 0; k < texto.size() && k < posiciones.size(); k++){
@@ -57,6 +69,8 @@ public:
         dibujarTexto(JP2, jugador2);
         dibujarTexto(vidas, pst_vidas);
         dibujarTexto(mazo, pst_mazo);
+        dibujarTexto(N, pst_nivel_num);
+        dibujarTexto(nivel_num, pst_nivel_num);
         dibujarTexto(poder, pst_shuriken);
         dibujarTexto(nivel, pst_nivel);
     }
